@@ -15,13 +15,7 @@
   --font-mono: var(--font-geist-mono);
 }
 
-/* System dark preference (fallback) */
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme]) {
-    --background: #020617;
-    --foreground: #e5e7eb;
-  }
-}
+/* No system dark fallback – default is light; dark only when data-theme="dark" */
 
 /* Explicit theme via data-theme from ThemeToggle */
 :root[data-theme="light"] {

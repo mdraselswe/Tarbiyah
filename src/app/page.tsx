@@ -251,7 +251,7 @@ export default function Home() {
               <input
                 id="name"
                 type="text"
-                placeholder="যেমন: আয়ান, আয়েশা..."
+                placeholder="যেমন: রুহাব, ওমর..."
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 className="w-full rounded-2xl border border-emerald-100 bg-white/70 px-3.5 py-2.5 text-sm sm:text-base shadow-[0_1px_0_rgba(15,118,110,0.06)] outline-none transition focus:border-emerald-400 focus:ring-2 focus:ring-emerald-100"
