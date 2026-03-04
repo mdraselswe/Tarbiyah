@@ -1,8 +1,11 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f9fafb;
+  --foreground: #0f172a;
+  --card-bg: rgba(255, 255, 255, 0.96);
+  --card-border: rgba(16, 185, 129, 0.08);
+  --text-muted: #6b7280;
 }
 
 @theme inline {
@@ -12,15 +15,127 @@
   --font-mono: var(--font-geist-mono);
 }
 
+/* System dark preference (fallback) */
 @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  :root:not([data-theme]) {
+    --background: #020617;
+    --foreground: #e5e7eb;
   }
+}
+
+/* Explicit theme via data-theme from ThemeToggle */
+:root[data-theme="light"] {
+  --background: #f9fafb;
+  --foreground: #0f172a;
+}
+
+:root[data-theme="dark"] {
+  --background: #020617; /* slate-950 */
+  --foreground: #e5e7eb; /* slate-200 */
+  --card-bg: rgba(15, 23, 42, 0.98); /* slate-900 */
+  --card-border: rgba(148, 163, 184, 0.55); /* slate-400 */
+  --text-muted: #9ca3af; /* slate-400 */
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease;
 }
+
+.tarbiyah-shell {
+  background: linear-gradient(to bottom, #ecfdf5, #ffffff, #e0f2fe);
+}
+
+:root[data-theme="dark"] .tarbiyah-shell {
+  background: radial-gradient(circle at top, #1f2933, #020617 55%, #020617 100%);
+}
+
+.bg-surface-card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--card-border);
+  backdrop-filter: blur(22px);
+}
+
+.text-muted-soft {
+  color: var(--text-muted);
+}
+
+.text-body-primary {
+  color: var(--foreground);
+}
+
+.text-body-muted {
+  color: var(--text-muted);
+}
+
+/* Arabic text – readable Naskh font */
+.font-arabic {
+  font-family: var(--font-arabic), "Traditional Arabic", serif;
+}
+
+/* Hero & header text – dark theme */
+.text-hero-label {
+  color: #047857;
+}
+:root[data-theme="dark"] .text-hero-label {
+  color: #34d399;
+}
+
+.text-hero-heading {
+  color: var(--foreground);
+}
+
+/* Header bar (layout) – dark theme */
+.header-bar {
+  background: rgba(255, 255, 255, 0.6);
+  border-color: transparent;
+}
+:root[data-theme="dark"] .header-bar {
+  background: rgba(15, 23, 42, 0.85);
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.header-title {
+  color: #064e3b;
+}
+:root[data-theme="dark"] .header-title {
+  color: #a7f3d0;
+}
+
+.header-logo {
+  color: #059669;
+}
+:root[data-theme="dark"] .header-logo {
+  color: #34d399;
+}
+
+/* Reminder box – dark theme */
+.reminder-box {
+  background: #ecfdf5;
+  color: #064e3b;
+}
+:root[data-theme="dark"] .reminder-box {
+  background: rgba(6, 78, 59, 0.35);
+  color: #a7f3d0;
+}
+.reminder-box .reminder-title {
+  color: #065f46;
+}
+:root[data-theme="dark"] .reminder-box .reminder-title {
+  color: #6ee7b7;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
